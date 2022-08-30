@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:richnet/home_page.dart';
+import 'package:richnet/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +29,10 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  List<Widget> pages = const [
+    HomePage(),
+    ProfilePage(),
+  ];
   String titleOnRootPage = "RichNet";
   int counter = 0;
   int currentpage = 0;
@@ -37,13 +42,13 @@ class _RootPageState extends State<RootPage> {
       appBar: AppBar(
         title: Text(titleOnRootPage),
       ),
-      body: const HomePage(),
+      body: pages[currentpage],
       backgroundColor: Colors.pink,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           counter++;
           if (counter % 2 == 1) {
-            titleOnRootPage = "I got your money";
+            titleOnRootPage = "Money makes you crazy, let poors live healthy.";
           } else {
             titleOnRootPage = "RichNet $counter";
           }
